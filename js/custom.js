@@ -1,73 +1,82 @@
 function calcCalories() {
     
 // Global variables
-      var imie = document.getElementById("imie").value;
-      var plec = $("input[name=plec]:checked").val();
-      var aktywnosc = $("input[name=aktywnosc]:checked").val();
-      var somatyczny = $("input[name=somatyczny]:checked").val();
-      var dieta = $("input[name=dieta]:checked").val();
-      var finalnaPrzemianaMaterii;
+      var name = document.getElementById("name").value;
+      var sex = $("input[name=sex]:checked").val();
+      var activity = $("input[name=activity]:checked").val();
+      var somatic = $("input[name=somatic]:checked").val();
+      var diet = $("input[name=diet]:checked").val();
+      var finalMetabolism;
 
               
-      function policzPodstawowaPrzemiane (waga, wzrost, wiek, plec) {
-          var wiek = document.getElementById("wiek").value;
-          var wzrost = document.getElementById("wzrost").value;
-          var waga = document.getElementById("waga").value;
-          var przemiana;
+      function countBasicMetabolism (weight, height, age, sex) {
+          var age = document.getElementById("age").value;
+          var height = document.getElementById("height").value;
+          var weight = document.getElementById("weight").value;
+          var metabolism;
 
-          if (plec == "mezczyzna") {
-            przemiana = 66.47 + (13.7 * waga) + (5 * wzrost) - (6.76 * wiek);
-          } else if (plec == "kobieta") {
-            przemiana = 665.09 + (9.56 * waga) + (1.85 * wzrost) - (4.67 * wiek);
+          if (sex == "man") {
+            metabolism = 66.47 + (13.7 * weight) + (5 * height) - (6.76 * age);
+          } else if (sex == "woman") {
+            metabolism = 665.09 + (9.56 * weight) + (1.85 * height) - (4.67 * age);
           }
-          return przemiana;
+          return metabolism;
       };
       
-      function policzPrzemianeDlaAktywnosci(przemiana, tryb) {
-          var tabela = {
-            'ak1': 1.0,
-            'ak2': 1.2,
-            'ak3': 1.4,
-            'ak4': 1.6,
-            'ak5': 1.8,
-            'ak6': 2.0
+      function countActivityMetabolism(metabolism, mode) {
+          var table = {
+            'activity1': 1.0,
+            'activity2': 1.2,
+            'activity3': 1.4,
+            'activity4': 1.6,
+            'activity5': 1.8,
+            'activity6': 2.0
           };
-          if (!tabela[tryb]) {
-            console.log('Nie znaleziono trybu ' + tryb);
+          if (!table[mode]) {
+            console.log('Sorry, could not find mode ' + mode);
             return 0;
           }
-          return przemiana * tabela[tryb];
+          return metabolism * table[mode];
       };
 
-      function policzSomatycznaPrzemiane(przemiana, tryb) {
-        var tabela = {
-          'so1': 0.1,
-          'so2': 0.15,
-          'so3': 0.2
+      function countSomaticMetabolism(metabolism, mode) {
+        var table = {
+          'ecto': 0.1,
+          'endo': 0.15,
+          'mezo': 0.2
         };
-        if (!tabela[tryb]) {
-          console.log('Nie znaleziono trybu ' + tryb);
+        if (!table[mode]) {
+          console.log('Nie znaleziono modeu ' + mode);
           return 0;
         }
-        return przemiana * tabela[tryb];
+        return metabolism * table[mode];
       };
 
-      var podstawowaPrzemianaMaterii = policzPodstawowaPrzemiane(waga, wzrost, wiek, plec);
-      var calkowitaPrzemianaMaterii = policzPrzemianeDlaAktywnosci(podstawowaPrzemianaMaterii, aktywnosc);
-      var somatycznaPrzemianaMaterii = policzSomatycznaPrzemiane(calkowitaPrzemianaMaterii, somatyczny);
+      var basicMetabolism = countBasicMetabolism(weight, height, age, sex);
+      var almostCompleteMetabolism = countActivityMetabolism(basicMetabolism, activity);
+      var somaticMetabolism = countSomaticMetabolism(almostCompleteMetabolism, somatic);
 
 // Diet goal
-      if (dieta=="masa") {
-        finalnaPrzemianaMaterii= calkowitaPrzemianaMaterii+ somatycznaPrzemianaMaterii;
+      if (diet=="gain") {
+        finalMetabolism= almostCompleteMetabolism+ somaticMetabolism;
       } else {
-        finalnaPrzemianaMaterii= calkowitaPrzemianaMaterii+ (-somatycznaPrzemianaMaterii);
+        finalMetabolism= almostCompleteMetabolism+ (-somaticMetabolism);
       };
       
 // Proteins, carbs and fats
-        var bialko= (finalnaPrzemianaMaterii* 0.3)/4;
-        var weglowodany= (finalnaPrzemianaMaterii*0.55)/4;
-        var tluszcze= (finalnaPrzemianaMaterii*0.15)/9;
+        var proteins= (finalMetabolism* 0.3)/4;
+        var carbohydrates= (finalMetabolism*0.55)/4;
+        var fats= (finalMetabolism*0.15)/9;
   
 // Final score
-      alert("Cześć " + imie + ", Twoje faktyczne dziennie zapotrzebowanie w kalorie wynosi " + calkowitaPrzemianaMaterii.toFixed(2) + "\n\n" + "Jeżeli Twoim celem jest " + dieta + ", to twoje zapotrzebowanie dziennie powinno wyglądać tak: " + finalnaPrzemianaMaterii.toFixed(2) + "\n\n" + "Pamietaj zeby uwzglednic w diecie " + bialko.toFixed(2) + " gram bialka, " + weglowodany.toFixed(2) + " gram weglowodanow i " + tluszcze.toFixed(2) + " gram tluszczy.");
+      alert("Hi, " + name + "! Your daily calories intake is around " + almostCompleteMetabolism.toFixed(2) + ", but when your goal is " + diet + ", your daily calories intake should be " + finalMetabolism.toFixed(2) + "\n\n" + "Also, remember to include in your diet " + proteins.toFixed(0) + " grams of proteins, " + carbohydrates.toFixed(0) + " grams of carbohydrates and " + fats.toFixed(0) + " grams of fats.");
 };
+
+
+
+
+
+
+
+
+

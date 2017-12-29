@@ -1,74 +1,75 @@
-body {
-height: auto;
-width: auto;
-background-color: #f9f9f9;
+html, body {
+    background: rgb(252,252,252);
+    background: -moz-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(239,239,239,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(252,252,252,1) 0%,rgba(239,239,239,1) 100%);
+    background: linear-gradient(to bottom, rgba(252,252,252,1) 0%,rgba(239,239,239,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#efefef',GradientType=0 );
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+
+::-moz-selection { background: #323984; }
+::selection { background: #323984; }
+
+.container {
+    max-width: 1200px;
 }
 
 h1 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
+    font-weight: 900;
     color: #373737;
-    font-size: 24px;
-    line-height: 40px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    font-size: 2.2em;
+    padding: 35vh 0;
+    text-transform: uppercase;
 }
 
 h2 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
+    font-weight: 700;
     color: #373737;
-    font-size: 18px;
-    line-height: 30px;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    padding-top: 10vh;
+    padding-bottom: 6vh;
 }
 
-h3 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
+input, select, textarea {
     color: #373737;
-    font-size: 16px;
-    text-shadow: 0px 2px 0px rgba(150, 150, 150, 0.59);
 }
 
-html {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-    color: #373737;
-    font-size: 16px;
-}
-
-.btn-primary {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
-    color: #fff;
-    font-size: 18px;
+.btn {
+    font-weight: 700;
+    color: white;
+    font-size: 1em;
     background-color: #171A3D;
-    border: none;
-    border-radius: 30px;
+    border-radius: 0;
     margin-bottom: 60px;
+    text-transform: uppercase;
+    box-shadow: none;
+    outline: none;
 }
 
-img {
-    display: block;
-    margin: 0 auto;
-    padding: 80px;
+.btn:hover {
+    color: #323984;
+    background-color: #e6e6e6;
 }
 
 form {
-    margin-left: 10%;
-    margin-right: 10%;
     border-radius: 0;
 }
 
 .form-control {
     box-shadow: none;
+    outline: none;
     border: 0;
     background: none;
+    max-width: 960px;
+    border-bottom: 2px solid #999999;
+    margin-top: 35px;
+    border-radius: 0;
 }
 
 .radio {
+    margin-bottom: 20px;
+    color: #999999;
     font-weight: 300;
-    font-size: 16px;
-    color: #373737;
-    margin-bottom: 16px;
 }

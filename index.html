@@ -4,9 +4,10 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>(another one) calories calc</title>
+        <title>(another one) Calories Calculator</title>
         <link href="css/bootstrap.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+        <link rel="stylesheet" href="css/custom.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,700,900" rel="stylesheet">
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -14,58 +15,73 @@
     </head>
 
     <body>
-        <div class="container">
-            <h1>Just another daily calories calculator</h1>
-            
+        <div class="container col-xs-12 col-md-6 col-md-offset-3">
+            <h1>Another Daily Calories Calculator</h1>
+
 <!-- Basic info !-->
             <form>
+                <h2>Tell me something about you</h2>
                 <div class="input-group">
-                    <input type="text" class="form-control" id="imie" placeholder="Wpisz swoje imię" aria-describedby="sizing-addon2">
-                    <input type="text" class="form-control" id="wiek" placeholder="Ile masz lat?" aria-describedby="sizing-addon2">
-                    <input type="text" class="form-control" id="wzrost" placeholder="Ile masz wzrostu? (użyj centymetrow)" aria-describedby="sizing-addon2">
-                    <input type="text" class="form-control" id="waga" placeholder="Ile ważysz w kg? (funty nie zadziałają)" aria-describedby="sizing-addon2">
+                    <input type="text" class="form-control" id="name" placeholder="What is your name?">
+                    <input type="text" class="form-control" id="age" placeholder="What is your age?">
+                    <input type="text" class="form-control" id="height" placeholder="Your height? (use centimeters)">
+                    <input type="text" class="form-control" id="weight" placeholder="Your current Weight? (only kilos are allowed)">
+                </div>
 
 <!-- Choose gender !-->
-                    <p>Wybierz swoją płeć:</p>
+                    <h2>Choose your sex</h2>
                     <label class="radio">
-                    <input type="radio" name="plec" value="mezczyzna">Mężczyzna</label>
+                        <input type="radio" name="sex" value="man">Man
+                    </label>
                     <label class="radio">
-                    <input type="radio" name="plec" value="kobieta">Kobieta</label>
+                        <input type="radio" name="sex" value="woman">Woman
+                    </label>
 
 <!-- Activity !-->
-                    <p>Jaki tryb życia prowadzisz?</p>
+                    <h2>What's your activity?</h2>
                     <label class="radio">
-                    <input type="radio" value="ak1" name="aktywnosc">Leżący, bez aktywności fizycznej</label>
+                        <input type="radio" value="activity1" name="activity">No activity at all
+                    </label>
                     <label class="radio">
-                    <input type="radio" value="ak2" name="aktywnosc">Siedzący, niska aktywność</label>
+                        <input type="radio" value="activity2" name="activity">Sitting work, low activity
+                    </label>
                     <label class="radio">
-                    <input type="radio" value="ak3" name="aktywnosc">Praca niefizyczna, trening 2 razy w tygodniu</label>
+                        <input type="radio" value="activity3" name="activity">2 trainings per week
+                    </label>
                     <label class="radio">
-                    <input type="radio" value="ak4" name="aktywnosc">Lekka fizyczna, trening 4 razy w tygodniu</label>
+                        <input type="radio" value="activity4" name="activity">4 trainings per week
+                    </label>
                     <label class="radio">
-                    <input type="radio" value="ak5" name="aktywnosc">Praca fizyczna, trening 5 razy w tygodniu</label>
+                        <input type="radio" value="activity5" name="activity">5 trainings per week
+                    </label>
                     <label class="radio">
-                    <input type="radio" value="ak6" name="aktywnosc">Ciężka praca fizyczna, trening 7 razy w tygodniu</label>
+                        <input type="radio" value="activity6" name="activity">Training every day
+                    </label>
 
 <!-- Somatic type !-->
-                    <p>Określ swój typ somatyczny:</p>
+                    <h2>What is your somatic type?</h2>
                     <label class="radio">
-                    <input type="radio" value="so1" name="somatyczny">Ektomorfik- suchoklates, nie potrafię tyć i budować mięśni</label>
+                        <input type="radio" value="ecto" name="somatic">I am ectomorph (I am rather thin)
+                    </label>
                     <label class="radio">
-                    <input type="radio" value="so2" name="somatyczny">Endomorfik- grubcio, nie potrafię chudnąć</label>
+                        <input type="radio" value="endo" name="somatic">I am endomorph (oh, I am fatty)
+                    </label>
                     <label class="radio">
-                    <input type="radio" value="so3" name="somatyczny">Mezomorfik- nie muszę ćwiczyć, mięśnie praktycznie same się budują</label>
+                        <input type="radio" value="mezo" name="somatic">I am mezomorph (looking like a Greek god)
+                    </label>
 
 <!-- Your goal !-->
-                    <p>Co chcesz osiągnąć?</p>
+                    <h2>What is your goal?</h2>
                     <label class="radio">
-                    <input type="radio" value="masa" name="dieta">Zwiększenie masy</label>
+                        <input type="radio" value="to gain some mass" name="diet">Gaining some weight
+                    </label>
                     <label class="radio">
-                    <input type="radio" value="redukcja" name="dieta">Redukcja masy</label>
-                </div>
+                        <input type="radio" value="reduction of mass" name="diet">Reducing weight
+                    </label>
             </form>
-        <br/>
-        <button type="button" class="btn btn-primary" id="obliczanie" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="calcCalories()">Gotowe</button>
+            <br/>
+
+            <button type="button" class="btn center-block" id="obliczanie" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="calcCalories()"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> Calculate</button>
         </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
