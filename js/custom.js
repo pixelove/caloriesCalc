@@ -17,7 +17,7 @@ function calcCalories() {
 
           if (sex == "man") {
             metabolism = 66.47 + (13.7 * weight) + (5 * height) - (6.76 * age);
-          } else if (sex == "woman") {
+          } else {
             metabolism = 665.09 + (9.56 * weight) + (1.85 * height) - (4.67 * age);
           }
           return metabolism;
@@ -45,6 +45,7 @@ function calcCalories() {
           'endo': 0.15,
           'mezo': 0.2
         };
+
         if (!table[mode]) {
           console.log('Nie znaleziono modeu ' + mode);
           return 0;
@@ -57,26 +58,17 @@ function calcCalories() {
       var somaticMetabolism = countSomaticMetabolism(almostCompleteMetabolism, somatic);
 
 // Diet goal
-      if (diet=="gain") {
-        finalMetabolism= almostCompleteMetabolism+ somaticMetabolism;
+      if (diet == "gain") {
+        finalMetabolism = almostCompleteMetabolism + somaticMetabolism;
       } else {
-        finalMetabolism= almostCompleteMetabolism+ (-somaticMetabolism);
+        finalMetabolism = almostCompleteMetabolism - somaticMetabolism;
       };
       
 // Proteins, carbs and fats
-        var proteins= (finalMetabolism* 0.3)/4;
-        var carbohydrates= (finalMetabolism*0.55)/4;
-        var fats= (finalMetabolism*0.15)/9;
+        var proteins = (finalMetabolism * 0.3) / 4;
+        var carbohydrates = (finalMetabolism * 0.55) / 4;
+        var fats = (finalMetabolism * 0.15) / 9;
   
 // Final score
       alert("Hi, " + name + "! Your daily calories intake is around " + almostCompleteMetabolism.toFixed(2) + ", but when your goal is " + diet + ", your daily calories intake should be " + finalMetabolism.toFixed(2) + "\n\n" + "Also, remember to include in your diet " + proteins.toFixed(0) + " grams of proteins, " + carbohydrates.toFixed(0) + " grams of carbohydrates and " + fats.toFixed(0) + " grams of fats.");
 };
-
-
-
-
-
-
-
-
-
